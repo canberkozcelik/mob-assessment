@@ -9,7 +9,7 @@ import kotlinx.android.parcel.Parcelize
 @SuppressLint("ParcelCreator")
 @Parcelize
 @JsonClass(generateAdapter = true)
-data class Category(
+data class CategoryResponse(
     @Json(name = "description")
     val description: String?,
     @Json(name = "id")
@@ -36,6 +36,11 @@ data class Category(
         @Json(name = "url")
         val url: String?
     ) : Parcelable {
+
+        fun getImageUrl(): String {
+            return "http://mobcategories.s3-website-eu-west-1.amazonaws.com$url"
+        }
+
         @SuppressLint("ParcelCreator")
         @Parcelize
         @JsonClass(generateAdapter = true)
