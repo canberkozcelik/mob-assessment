@@ -8,9 +8,11 @@ import com.mobiquity.assessment.R
 import com.mobiquity.assessment.databinding.ItemProductBinding
 import com.mobiquity.assessment.extension.setSafeOnClickListener
 import com.mobiquity.assessment.network.data.CategoryResponse
-import com.mobiquity.assessment.ui.product.ProductDetailFragment
 
-class ProductListAdapter constructor(private val items: List<CategoryResponse.Product?>) :
+class ProductListAdapter constructor(
+    private val items: List<CategoryResponse.Product?>,
+    private val productSelectedListener: OnProductSelectedListener
+) :
     RecyclerView.Adapter<ProductListAdapter.ProductViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -33,7 +35,7 @@ class ProductListAdapter constructor(private val items: List<CategoryResponse.Pr
             holder.binding.apply {
                 product = it
                 root.setSafeOnClickListener { _ ->
-                    val productDetailFragment = ProductDetailFragment.newInstance(it)
+                    productSelectedListener.selected(it)
                 }
             }
         }
@@ -44,4 +46,8 @@ class ProductListAdapter constructor(private val items: List<CategoryResponse.Pr
     }
 
     class ProductViewHolder(val binding: ItemProductBinding) : RecyclerView.ViewHolder(binding.root)
+
+    interface OnProductSelectedListener {
+        fun selected(item: CategoryResponse.Product)
+    }
 }

@@ -49,6 +49,11 @@ data class CategoryResponse(
             val amount: String?,
             @Json(name = "currency")
             val currency: String?
-        ) : Parcelable
+        ) : Parcelable {
+
+            fun getPriceText(): String {
+                return "$currency $amount"
+            }
+        }
     }
 }

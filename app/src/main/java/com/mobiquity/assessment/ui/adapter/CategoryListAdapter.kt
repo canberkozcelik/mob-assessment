@@ -8,7 +8,8 @@ import com.mobiquity.assessment.R
 import com.mobiquity.assessment.databinding.ItemCategoryBinding
 import com.mobiquity.assessment.network.data.CategoryResponse
 
-class CategoryListAdapter : RecyclerView.Adapter<CategoryListAdapter.CategoryViewHolder>() {
+class CategoryListAdapter constructor(private val productSelectedListener: ProductListAdapter.OnProductSelectedListener) :
+    RecyclerView.Adapter<CategoryListAdapter.CategoryViewHolder>() {
 
     private var items: MutableList<CategoryResponse> = mutableListOf()
 
@@ -32,7 +33,13 @@ class CategoryListAdapter : RecyclerView.Adapter<CategoryListAdapter.CategoryVie
             holder.binding.apply {
                 category = it
                 it.products?.let { products ->
-                    adapter = ProductListAdapter(products)
+                    adapter = ProductListAdapter(
+                        products,
+                        object : ProductListAdapter.OnProductSelectedListener {
+                            override fun selected(item: CategoryResponse.Product) {
+                                productSelectedListener.selected(item)
+                            }
+                        })
                 }
                 executePendingBindings()
             }
