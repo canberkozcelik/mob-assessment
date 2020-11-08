@@ -1,8 +1,6 @@
 package com.mobiquity.assessment
 
 import com.mobiquity.assessment.network.MobService
-import com.mobiquity.assessment.network.MobServiceClient
-import com.nhaarman.mockitokotlin2.mock
 import com.skydoves.sandwich.ApiResponse
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
@@ -16,7 +14,6 @@ import org.junit.Test
 class MobServiceTest : ApiAbstract<MobService>() {
 
     private lateinit var service: MobService
-    private val client: MobServiceClient = mock()
 
     @ExperimentalCoroutinesApi
     @get:Rule
@@ -34,7 +31,6 @@ class MobServiceTest : ApiAbstract<MobService>() {
         val responseBody = requireNotNull((response as ApiResponse.Success).data)
         mockServer.takeRequest()
 
-        client.getCategories()
         assertThat(responseBody.isEmpty(), `is`(false))
         assertThat(responseBody[0].id, `is`("36802"))
         assertThat(responseBody[0].name, `is`("food"))
