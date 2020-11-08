@@ -1,4 +1,4 @@
-package com.mobiquity.assessment
+package com.mobiquity.assessment.network
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.skydoves.sandwich.coroutines.CoroutinesResponseCallAdapterFactory

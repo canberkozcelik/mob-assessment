@@ -1,6 +1,6 @@
-package com.mobiquity.assessment
+package com.mobiquity.assessment.network
 
-import com.mobiquity.assessment.network.MobService
+import com.mobiquity.assessment.MainCoroutinesRule
 import com.skydoves.sandwich.ApiResponse
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking

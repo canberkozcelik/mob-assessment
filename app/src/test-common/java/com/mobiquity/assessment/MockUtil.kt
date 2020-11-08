@@ -7,16 +7,16 @@ object MockUtil {
 
     fun mockCategories() = listOf(mockCategory())
 
-    fun mockCategory() = CategoryResponse(
+    private fun mockCategory() = CategoryResponse(
         id = "36802",
         name = "Food",
         description = "",
         products = mockProducts()
     )
 
-    fun mockProducts() = listOf(mockProduct())
+    private fun mockProducts() = listOf(mockProduct())
 
-    fun mockProduct() = CategoryResponse.Product(
+    private fun mockProduct() = CategoryResponse.Product(
         id = "1",
         categoryId = "36802",
         name = "Bread",
@@ -25,7 +25,7 @@ object MockUtil {
         salePrice = mockSalePrice()
     )
 
-    fun mockSalePrice() = CategoryResponse.Product.SalePrice(
+    private fun mockSalePrice() = CategoryResponse.Product.SalePrice(
         amount = "0.81",
         currency = "EUR"
     )

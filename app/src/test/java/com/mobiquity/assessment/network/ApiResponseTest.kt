@@ -1,4 +1,4 @@
-package com.mobiquity.assessment
+package com.mobiquity.assessment.network
 
 /*
  * Designed and developed by 2020 skydoves (Jaewoong Eum)
